@@ -7,8 +7,8 @@ const hre = require("hardhat")
 
 const MARKET_RESERVES = '1000';   // 1000 TOKEN in market reserves
 
-const BASE_ADDRESS = '0x0000000000000000000000000000000000000000';  // BASE Token Address (eg WETH on zkEVM)
-const MULTISIG = '0x0000000000000000000000000000000000000000';      // Multisig Address
+const BASE_ADDRESS = '0x4200000000000000000000000000000000000006';  // BASE Token Address (eg WETH on zkEVM)
+const MULTISIG = '0x317d250c6a3d66835fb9f798647b63e40b6c844a';      // Multisig Address
 
 /*===========================  END SETTINGS  ========================*/
 /*===================================================================*/
@@ -29,25 +29,25 @@ let multicall, controller;
 
 async function getContracts() {
 
-    // OTOKENFactory = await ethers.getContractAt("contracts/OTOKENFactory.sol:OTOKENFactory", "0x0000000000000000000000000000000000000000");
-    // VTOKENFactory = await ethers.getContractAt("contracts/VTOKENFactory.sol:VTOKENFactory", "0x0000000000000000000000000000000000000000");
-    // feesFactory = await ethers.getContractAt("contracts/TOKENFeesFactory.sol:TOKENFeesFactory", "0x0000000000000000000000000000000000000000");
-    // rewarderFactory = await ethers.getContractAt("contracts/VTOKENRewarderFactory.sol:VTOKENRewarderFactory", "0x0000000000000000000000000000000000000000");
+     OTOKENFactory = await ethers.getContractAt("contracts/OTOKENFactory.sol:OTOKENFactory", "0xd54B64A096b785d19CFf3f19061509230736590c");
+     VTOKENFactory = await ethers.getContractAt("contracts/VTOKENFactory.sol:VTOKENFactory", "0x5Ed50fbB15d047B2b6BC0E6FAdE25A3B1eee106d");
+     feesFactory = await ethers.getContractAt("contracts/TOKENFeesFactory.sol:TOKENFeesFactory", "0x56DF157dec576Cc2596257FB17115a7ea0329e01");
+     rewarderFactory = await ethers.getContractAt("contracts/VTOKENRewarderFactory.sol:VTOKENRewarderFactory", "0x58Dd173F30EcfFdfEbCd242C71241fB2f179e9B9");
 
-    // TOKEN = await ethers.getContractAt("contracts/TOKEN.sol:TOKEN", "0x0000000000000000000000000000000000000000");
-    // OTOKEN = await ethers.getContractAt("contracts/OTOKENFactory.sol:OTOKEN", await TOKEN.OTOKEN());
-    // VTOKEN = await ethers.getContractAt("contracts/VTOKENFactory.sol:VTOKEN", await TOKEN.VTOKEN());
-    // fees = await ethers.getContractAt("contracts/TOKENFeesFactory.sol:TOKENFees", await TOKEN.FEES());
-    // rewarder = await ethers.getContractAt("contracts/VTOKENRewarderFactory.sol:VTOKENRewarder", await VTOKEN.rewarder());
-    // governor = await ethers.getContractAt("contracts/TOKENGovernor.sol:TOKENGovernor", "0x0000000000000000000000000000000000000000");
+     TOKEN = await ethers.getContractAt("contracts/TOKEN.sol:TOKEN", "0x46e77D8349BA8AE9137B89196A61FFEE2c8c64B4");
+     OTOKEN = await ethers.getContractAt("contracts/OTOKENFactory.sol:OTOKEN", await TOKEN.OTOKEN());
+     VTOKEN = await ethers.getContractAt("contracts/VTOKENFactory.sol:VTOKEN", await TOKEN.VTOKEN());
+     fees = await ethers.getContractAt("contracts/TOKENFeesFactory.sol:TOKENFees", await TOKEN.FEES());
+     rewarder = await ethers.getContractAt("contracts/VTOKENRewarderFactory.sol:VTOKENRewarder", await VTOKEN.rewarder());
+     governor = await ethers.getContractAt("contracts/TOKENGovernor.sol:TOKENGovernor", "0xE23E1a116090A0829b7Ab536a3aF463A5A36A5A5");
 
-    // gaugeFactory = await ethers.getContractAt("contracts/GaugeFactory.sol:GaugeFactory", "0x0000000000000000000000000000000000000000");
-    // bribeFactory = await ethers.getContractAt("contracts/BribeFactory.sol:BribeFactory", "0x0000000000000000000000000000000000000000");
-    // voter = await ethers.getContractAt("contracts/Voter.sol:Voter", "0x0000000000000000000000000000000000000000");
-    // minter = await ethers.getContractAt("contracts/Minter.sol:Minter", "0x0000000000000000000000000000000000000000");
+     gaugeFactory = await ethers.getContractAt("contracts/GaugeFactory.sol:GaugeFactory", "0x9714412E8838337E60C8f7b4C2Bc49247964c0fd");
+     bribeFactory = await ethers.getContractAt("contracts/BribeFactory.sol:BribeFactory", "0x756fC5e6BdB26A85594346D7D0520E1c0e492452");
+     voter = await ethers.getContractAt("contracts/Voter.sol:Voter", "0xF49222fCCBa2c149B3Ff3AE9D3A30eDb1f162576");
+     minter = await ethers.getContractAt("contracts/Minter.sol:Minter", "0x3Bb30CA0Bf95D6a2Fc8aD9087BAC92711BF0947e");
 
-    // multicall = await ethers.getContractAt("contracts/Multicall.sol:Multicall", "0x0000000000000000000000000000000000000000");
-    // controller = await ethers.getContractAt("contracts/Controller.sol:Controller", "0x0000000000000000000000000000000000000000");
+     multicall = await ethers.getContractAt("contracts/Multicall.sol:Multicall", "0x1Eeb34B653d396Cdc60A9C434C09E1803dd4904E");
+     controller = await ethers.getContractAt("contracts/Controller.sol:Controller", "0x48377A5b243a17e23b6A782a2e2172b39A786064");
 
     console.log("Contracts Retrieved");
 }
@@ -439,12 +439,12 @@ async function main() {
     // 1. Deploy Token Factories
     //===================================================================
 
-    // console.log('Starting Factory Deployment');
-    // await deployOTOKENFactory();
-    // await deployVTOKENFactory();
-    // await deployFeesFactory();
-    // await deployRewarderFactory();
-    // await printFactoryAddresses();
+     //console.log('Starting Factory Deployment');
+     //await deployOTOKENFactory();
+     //await deployVTOKENFactory();
+     //await deployFeesFactory();
+     //await deployRewarderFactory();
+     //await printFactoryAddresses();
 
     /*********** UPDATE getContracts() with new addresses *************/
 
@@ -452,10 +452,10 @@ async function main() {
     // 2. Deploy Token
     //===================================================================
 
-    // console.log('Starting Token Deployment');
-    // await deployTOKEN();
-    // await deployGovernor();
-    // await printTokenAddresses();
+     //console.log('Starting Token Deployment');
+     //await deployTOKEN();
+     //await deployGovernor();
+     //await printTokenAddresses();
 
     /*********** UPDATE getContracts() with new addresses *************/
 
@@ -463,12 +463,12 @@ async function main() {
     // 3. Deploy Voting System
     //===================================================================
   
-    // console.log('Starting Voting Deployment');
-    // await deployGaugeFactory(wallet.address); 
-    // await deployBribeFactory(wallet.address);
-    // await deployVoter();
-    // await deployMinter();
-    // await printVotingAddresses();
+     //console.log('Starting Voting Deployment');
+     //await deployGaugeFactory(wallet.address); 
+     //await deployBribeFactory(wallet.address);
+     //await deployVoter();
+     //await deployMinter();
+     //await printVotingAddresses();
 
     /*********** UPDATE getContracts() with new addresses *************/
 
@@ -476,10 +476,10 @@ async function main() {
     // 4. Deploy Ancillary Contracts
     //===================================================================
 
-    // console.log('Starting Ancillary Deployment');
-    // await deployMulticall();
-    // await deployController();
-    // await printAncillaryAddresses();
+     //console.log('Starting Ancillary Deployment');
+     //await deployMulticall();
+     //await deployController();
+     //await printAncillaryAddresses();
 
     /*********** UPDATE getContracts() with new addresses *************/
 
@@ -487,50 +487,50 @@ async function main() {
     // 5. Verify Token Contracts
     //===================================================================
 
-    // console.log('Starting Token Verification');
-    // await verifyTOKEN();
-    // await verifyOTOKEN(wallet.address);
-    // await verifyVTOKEN();
-    // await verifyTOKENFees();
-    // await verifyRewarder();
-    // await verifyGovernor();
-    // console.log("Token Contracts Verified")
+     //console.log('Starting Token Verification');
+     //await verifyTOKEN();
+     //await verifyOTOKEN(wallet.address);
+     //await verifyVTOKEN();
+     //await verifyTOKENFees();
+     //await verifyRewarder();
+     //await verifyGovernor();
+     //console.log("Token Contracts Verified")
 
     //===================================================================
     // 6. Verify Voting Contracts
     //===================================================================
 
-    // console.log('Starting Voting Verification');
-    // await verifyGaugeFactory(wallet.address); 
-    // await verifyBribeFactory(wallet.address);
-    // await verifyVoter();
-    // await verifyMinter();
-    // console.log("Voting Contracts Verified")
+     //console.log('Starting Voting Verification');
+     //await verifyGaugeFactory(wallet.address); 
+     //await verifyBribeFactory(wallet.address);
+     //await verifyVoter();
+     //await verifyMinter();
+     //console.log("Voting Contracts Verified")
 
     //===================================================================
     // 7. Verify Ancillary Contracts
     //===================================================================
 
-    // console.log('Starting Ancillary Verification');
-    // await verifyMulticall();
-    // await verifyController();
-    // console.log("Ancillary Contracts Verified")
+     //console.log('Starting Ancillary Verification');
+     //await verifyMulticall();
+     //await verifyController();
+     //console.log("Ancillary Contracts Verified")
   
     //===================================================================
     // 8. Set Up System
     //===================================================================
 
-    // console.log('Starting System Set Up');
-    // await setUpSystem(wallet.address);
-    // console.log("System Set Up")
+     //console.log('Starting System Set Up');
+     //await setUpSystem(wallet.address);
+     //console.log("System Set Up")
 
     //===================================================================
     // 9. Transfer Ownership
     //===================================================================
 
-    // console.log('Starting Ownership Transfer');
-    // await transferOwnership();
-    // console.log("Ownership Transferred");
+     console.log('Starting Ownership Transfer');
+     await transferOwnership();
+     console.log("Ownership Transferred");
   
   }
   

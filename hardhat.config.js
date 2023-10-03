@@ -1,13 +1,13 @@
 const { config } = require("dotenv");
 
 require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-etherscan");
+require("@nomicfoundation/hardhat-verify");
 require("solidity-coverage");
 
 /*===================================================================*/
 /*===========================  SETTINGS  ============================*/
 
-const CHAIN_ID = 80001; // Mumbai chain id
+const CHAIN_ID = 84531; // Base goerli chain id
 
 /*===========================  END SETTINGS  ========================*/
 /*===================================================================*/
@@ -30,7 +30,6 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
-
 module.exports = {
   solidity: {
     version: "0.8.19",
@@ -45,17 +44,27 @@ module.exports = {
     },
   },
   networks: {
-    hardhat: {
-    },
+    hardhat: {},
     mainnet: {
       url: RPC_URL,
       chainId: CHAIN_ID,
+      gasPrice: 1000000000,
       accounts: [PRIVATE_KEY],
     },
   },
   etherscan: {
-    apiKey: SCAN_API_KEY
+    apiKey: SCAN_API_KEY,
   },
+  customChains: [
+    {
+      network: "basegoerli",
+      chainId: 84531,
+      urls: {
+        apiURL: "https://api-goerli.basescan.org/api",
+        browserURL: "https://goerli.basescan.org",
+      },
+    },
+  ],
   paths: {
     sources: "./contracts",
     tests: "./tests",

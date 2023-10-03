@@ -8,16 +8,18 @@
     },
     "scripts": {
         "deploy": "hardhat run ./scripts/deploy.js  --network mainnet",
-        "deployTestPlugins": "hardhat run ./scripts/local/deployPlugins.js  --network mainnet"
+        "deployTestPlugins": "hardhat run ./scripts/deployPluginsTest.js  --network mainnet"
     },
     "devDependencies": {
         "@nomicfoundation/hardhat-chai-matchers": "^1.0.3",
         "@nomicfoundation/hardhat-network-helpers": "^1.0.9",
+        "@nomicfoundation/hardhat-verify": "^1.1.1",
         "@nomiclabs/hardhat-ethers": "^2.0.5",
         "@nomiclabs/hardhat-waffle": "^2.0.5",
         "chai": "^4.3.6",
         "ethereum-waffle": "^3.4.4",
         "ethers": "^5.6.4",
+        "hardhat-verify": "^1.0.0",
         "solidity-coverage": "^0.8.0"
     }
 }

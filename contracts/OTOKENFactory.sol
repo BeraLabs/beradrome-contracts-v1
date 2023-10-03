@@ -16,10 +16,10 @@ contract OTOKEN is ERC20, ERC20Burnable {
     /*===================================================================*/
     /*===========================  SETTINGS  ============================*/
 
-    string internal constant NAME = "CallOptionTOKEN";  // name of OTOKEN
-    string internal constant SYMBOL = "oTOKEN";         // symbol of OTOKEN
+    string internal constant NAME = "ToupeeTechOption";  // name of OTOKEN
+    string internal constant SYMBOL = "oWIG";         // symbol of OTOKEN
     
-    uint internal constant INITIAL_SUPPLY = 1000;   // initial supply of OTOKEN
+    uint internal constant INITIAL_SUPPLY = 10000;   // initial supply of OTOKEN
 
     /*===========================  END SETTINGS  ========================*/
     /*===================================================================*/

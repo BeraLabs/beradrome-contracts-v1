@@ -40,8 +40,8 @@ contract VTOKEN is ERC20, ERC20Permit, ERC20Votes, ReentrancyGuard, Ownable {
     /*===================================================================*/
     /*===========================  SETTINGS  ============================*/
 
-    string internal constant NAME = 'VotingTOKEN';      // Name of VTOKEN
-    string internal constant SYMBOL = 'vTOKEN';         // Symbol of VTOKEN
+    string internal constant NAME = 'ToupeeTechVoter';      // Name of VTOKEN
+    string internal constant SYMBOL = 'vWIG';         // Symbol of VTOKEN
 
     /*===========================  END SETTINGS  ========================*/
     /*===================================================================*/

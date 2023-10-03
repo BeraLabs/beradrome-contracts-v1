@@ -59,8 +59,8 @@ contract TOKEN is ERC20, ReentrancyGuard {
     /*===================================================================*/
     /*===========================  SETTINGS  ============================*/
 
-    string internal constant NAME = 'LilTOKEN';     // Name of TOKEN
-    string internal constant SYMBOL = 'TOKEN';       // Symbol of TOKEN
+    string internal constant NAME = 'ToupeeTech';     // Name of TOKEN
+    string internal constant SYMBOL = 'WIG';       // Symbol of TOKEN
 
     uint256 public constant PROTOCOL_FEE = 30;      // Swap and borrow fee: buy, sell, borrow
     uint256 public constant PROVIDER_FEE = 4000;    // Fee for the UI hosting provider

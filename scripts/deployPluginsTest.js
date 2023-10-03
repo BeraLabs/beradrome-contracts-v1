@@ -5,7 +5,7 @@ const hre = require("hardhat")
 /*===================================================================*/
 /*===========================  SETTINGS  ============================*/
 
-const VOTER_ADDRESS = '0x0000000000000000000000000000000000000000';
+const VOTER_ADDRESS = '0xF49222fCCBa2c149B3Ff3AE9D3A30eDb1f162576';
 
 /*===========================  END SETTINGS  ========================*/
 /*===================================================================*/
@@ -23,8 +23,8 @@ let plugin;
 
 async function getContracts() {
 
-    // pluginFactory = await ethers.getContractAt("contracts/plugins/local/MockPluginFactory.sol:MockPluginFactory", "0x0000000000000000000000000000000000000000");
-    // plugin = await ethers.getContractAt("contracts/plugins/local/MockPluginFactory.sol:MockPlugin", "0x0000000000000000000000000000000000000000");
+     pluginFactory = await ethers.getContractAt("contracts/plugins/local/MockPluginFactory.sol:MockPluginFactory", "0x53eC36f0b510f0a510f3aa2698941f53c72f42f1");
+     plugin = await ethers.getContractAt("contracts/plugins/local/MockPluginFactory.sol:MockPlugin", "0x25CF6208a85938E2716C49daeE53188D59037238");
 
     console.log("Contracts Retrieved");
 }
@@ -120,8 +120,8 @@ async function main() {
     // 1. Deploy Plugin Factory
     //===================================================================
 
-    // await deployPluginFactory();
-    // await printFactoryAddress();
+     //await deployPluginFactory();
+     //await printFactoryAddress();
 
     /*********** UPDATE getContracts() with new addresses *************/
 
@@ -129,7 +129,7 @@ async function main() {
     // 2. Verify Plugin Factory
     //===================================================================
 
-    // await verifyPluginFactory();
+     //await verifyPluginFactory();
 
     //===================================================================
     // 3. Deploy Plugin
@@ -137,13 +137,13 @@ async function main() {
     // Only deploy one plugin at a time
 
     //----LP Plugin------------------------------------------------------
-    // await deployLPPlugin("LP-TEST0/TEST1", "TEST0", "TEST1");
+     //await deployLPPlugin("LP-Plugin-TEST0/TEST1", "TEST0", "TEST1");
 
     //----LP Farm Plugin-------------------------------------------------
-    // await deployLPFarmPlugin("LP-TEST0/TEST1", "TEST0", "TEST1", "RWRD0");
+     //await deployLPFarmPlugin("LPGauge-Plugin-TEST0/TEST1", "TEST0", "TEST1", "RWRD0");
 
     //----Single Stake Plugin--------------------------------------------
-    // await deploySingleStakePlugin("TEST0", "TEST1");
+     await deploySingleStakePlugin("TEST0", "TEST1");
 
     /*********** UPDATE getContracts() with new addresses *************/
 
@@ -151,7 +151,7 @@ async function main() {
     // 4. Verify Plugin
     //===================================================================
 
-    // await verifyPlugin();
+     //await verifyPlugin();
   
   }
   
