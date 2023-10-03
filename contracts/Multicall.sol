@@ -72,7 +72,7 @@ contract Multicall {
         uint256 apr;                    // C8
         uint256 ltv;                    // C9
         uint256 marketCap;              // C10
-        uint256 weeklyOSOLID;           // C11
+        uint256 weekly;                 // C11
 
         uint256 accountBASE;            // C12
         uint256 accountTOKEN;           // C13
@@ -167,7 +167,9 @@ contract Multicall {
     /*----------  VIEW FUNCTIONS  ---------------------------------------*/
 
     function getBasePrice() public view returns (uint256) {
-        if (FEED_ID == 0x0) {
+        if (ORACLE == address(0)) {
+            return 1e18;
+        } else if (FEED_ID == 0x0) {
             return IChainlinkOracle(ORACLE).latestAnswer() * 1e18 / 1e8;
         } else {
             int64 price = IPythOracle(ORACLE).getPriceUnsafe(FEED_ID).price;
@@ -198,7 +200,7 @@ contract Multicall {
                            (IVTOKENRewarder(rewarder).getRewardForDuration(OTOKEN) * bondingCurve.priceOTOKEN / 1e18)) * 365 * 100 * 1e18 / (7 * IERC20(VTOKEN).totalSupply() * bondingCurve.priceTOKEN / 1e18));
         bondingCurve.ltv = 100 * ITOKEN(TOKEN).getFloorPrice() * 1e18 / ITOKEN(TOKEN).getMarketPrice();
         bondingCurve.marketCap = bondingCurve.supplyTOKEN * bondingCurve.priceTOKEN / 1e18;
-        bondingCurve.weeklyOSOLID = IMinter(IVoter(voter).minter()).weekly();
+        bondingCurve.weekly = IMinter(IVoter(voter).minter()).weekly();
 
         bondingCurve.accountBASE = (account == address(0) ? 0 : IERC20(BASE).balanceOf(account));
         bondingCurve.accountTOKEN = (account == address(0) ? 0 : IERC20(TOKEN).balanceOf(account));

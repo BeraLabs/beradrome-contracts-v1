@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
 import 'contracts/Plugin.sol';
 
 interface IMasterChef {
@@ -105,7 +104,7 @@ contract QuickSwapFarmPlugin is Plugin {
 
 }
 
-contract QuickSwapFarmPluginFactory is Ownable {
+contract QuickSwapFarmPluginFactory {
 
     address public constant QUICK = 0x68286607A1d43602d880D349187c3c48c0fD05E6;
     string public constant PROTOCOL = 'QuickSwap';
@@ -124,7 +123,7 @@ contract QuickSwapFarmPluginFactory is Ownable {
         address _lpToken,
         uint256 _pid,
         string memory _symbol // ex mLP-QUICK/ETH (Narrow) or mLP-QUICK/ETH (Wide) or mLP-USDT/USDC (Stable)
-    ) external onlyOwner returns (address) {
+    ) external returns (address) {
         address token0 = IGammaLP(_lpToken).token0();
         address token1 = IGammaLP(_lpToken).token1();
 

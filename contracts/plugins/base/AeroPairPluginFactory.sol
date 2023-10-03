@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
 import 'contracts/Plugin.sol';
 
 interface IAeroLP {
@@ -77,7 +76,7 @@ contract AeroPairPlugin is Plugin {
 
 }
 
-contract AeroPairPluginFactory is Ownable {
+contract AeroPairPluginFactory {
 
     address public constant POOL_FACTORY = 0x420DD381b31aEf6683db6B902084cB0FFECe40Da;
     string public constant PROTOCOL = 'Aerodrome';
@@ -97,7 +96,7 @@ contract AeroPairPluginFactory is Ownable {
     function createPlugin(
         address _lpToken,
         string memory _symbol // ex sLP-USDT/USDC or vLP-DAI/ETH
-    ) external onlyOwner returns (address) {
+    ) external returns (address) {
         if (!IPoolFactory(POOL_FACTORY).isPool(_lpToken)) revert PluginFactory__NotPair();
         (address token0, address token1) = IAeroLP(_lpToken).tokens();
 

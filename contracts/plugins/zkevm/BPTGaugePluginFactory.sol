@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
 import 'contracts/Plugin.sol';
 
 interface IBalancerGauge {
@@ -111,7 +110,7 @@ contract BPTGaugePlugin is Plugin {
 
 }
 
-contract BPTGaugePluginFactory is Ownable {
+contract BPTGaugePluginFactory {
 
     string public constant PROTOCOL = 'Balancer';
     address public constant GAUGE_FACTORY = 0x2498A2B0d6462d2260EAC50aE1C3e03F4829BA95;
@@ -134,7 +133,7 @@ contract BPTGaugePluginFactory is Ownable {
         address[] memory _tokensInUnderlying,
         address[] memory _bribeTokens,
         string memory _symbol // ex B-wstETH-STABLE or B-rETH-STABLE or B-wstETH/rETH-STABLE
-    ) external onlyOwner returns (address) {
+    ) external returns (address) {
 
         BPTGaugePlugin lastPlugin = new BPTGaugePlugin(
             _bpt,

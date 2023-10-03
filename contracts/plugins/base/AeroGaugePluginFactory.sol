@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
 import 'contracts/Plugin.sol';
 
 interface IAeroLP {
@@ -108,7 +107,7 @@ contract AeroGaugePlugin is Plugin {
 
 }
 
-contract AeroGaugePluginFactory is Ownable {
+contract AeroGaugePluginFactory {
 
     address public constant AERO = 0x940181a94A35A4569E4529A3CDfB74e38FD98631;
     address public constant POOL_FACTORY = 0x420DD381b31aEf6683db6B902084cB0FFECe40Da;
@@ -131,7 +130,7 @@ contract AeroGaugePluginFactory is Ownable {
     function createPlugin(
         address _lpToken,
         string memory _symbol // ex sLP-USDT/USDC or vLP-DAI/ETH
-    ) external onlyOwner returns (address) {
+    ) external returns (address) {
         if (!IPoolFactory(POOL_FACTORY).isPool(_lpToken)) revert PluginFactory__NotPair();
         if (IAeroVoter(AERO_VOTER).gauges(_lpToken) == address(0)) revert PluginFactory__InvalidGauge();
         (address token0, address token1) = IAeroLP(_lpToken).tokens();

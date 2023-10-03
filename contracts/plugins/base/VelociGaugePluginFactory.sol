@@ -154,7 +154,7 @@ contract VelociGaugePluginFactory is Ownable {
         address _lpToken,
         address[] memory _gaugeRewards,
         string memory _symbol // ex sLP-USDT/USDC or vLP-DAI/ETH
-    ) external onlyOwner returns (address) {
+    ) external returns (address) {
         if (!IRouter(ROUTER).isPair(_lpToken)) revert PluginFactory__NotPair();
         if (IVelociVoter(VELOCI_VOTER).gauges(_lpToken) == address(0)) revert PluginFactory__InvalidGauge();
         (address token0, address token1) = IVelociLP(_lpToken).tokens();
