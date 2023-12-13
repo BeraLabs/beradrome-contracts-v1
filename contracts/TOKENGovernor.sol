@@ -18,13 +18,13 @@ contract TOKENGovernor is Governor, GovernorSettings, GovernorCountingSimple, Go
     /*===================================================================*/
     /*===========================  SETTINGS  ============================*/
 
-    string internal constant NAME = 'ToupeeTechGovernor';  // Name of Governor
+    string internal constant NAME = 'BERADROME Governor';  // Name of Governor
 
-    uint256 internal constant BLOCKTIME = 2;            // Number of seconds per block (eg 10 seconds per block)
+    uint256 internal constant BLOCKTIME = 5;            // Number of seconds per block (eg 10 seconds per block)
     uint256 internal constant VOTING_DELAY = 1 days;      // Delay (seconds) since proposal creation to when voting can start (updatable by governance)
     uint256 internal constant VOTING_PERIOD = 7 days;   // Length of time (seconds) where people can cast their votes (updatable by governance)
 
-    uint256 internal constant PROPOSAL_THRESHOLD = 10;      // Number of VTOKEN needed to make proposal (updatable by governance)
+    uint256 internal constant PROPOSAL_THRESHOLD = 100;      // Number of VTOKEN needed to make proposal (updatable by governance)
     uint256 internal constant QUORUM = 4;                   // Percentage of VTOKEN supply needed to vote for a proposal to pass (eg 4% of VTOKEN supply)
 
     /*===========================  END SETTINGS  ========================*/

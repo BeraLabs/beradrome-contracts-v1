@@ -7,7 +7,7 @@ require("solidity-coverage");
 /*===================================================================*/
 /*===========================  SETTINGS  ============================*/
 
-const CHAIN_ID = 84531; // Base goerli chain id
+const CHAIN_ID = 2061; // bera testnet
 
 /*===========================  END SETTINGS  ========================*/
 /*===================================================================*/
@@ -38,7 +38,7 @@ module.exports = {
         enabled: true,
         runs: 200,
         details: {
-          yul: true
+         // yul: true
         }
       },
     },
@@ -48,7 +48,7 @@ module.exports = {
     mainnet: {
       url: RPC_URL,
       chainId: CHAIN_ID,
-      gasPrice: 1000000000,
+      //gasPrice: 1000000000,
       accounts: [PRIVATE_KEY],
     },
   },

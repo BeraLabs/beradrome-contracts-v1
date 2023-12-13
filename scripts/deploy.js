@@ -5,10 +5,10 @@ const hre = require("hardhat")
 /*===================================================================*/
 /*===========================  SETTINGS  ============================*/
 
-const MARKET_RESERVES = '1000';   // 1000 TOKEN in market reserves
+const MARKET_RESERVES = '10000';   // 10000 TOKEN in market reserves
 
-const BASE_ADDRESS = '0x4200000000000000000000000000000000000006';  // BASE Token Address (eg WETH on zkEVM)
-const MULTISIG = '0x317d250c6a3d66835fb9f798647b63e40b6c844a';      // Multisig Address
+const BASE_ADDRESS = '0x7EeCA4205fF31f947EdBd49195a7A88E6A91161B';  // BASE Token Address (eg WETH on zkEVM)
+const MULTISIG = '0x34D023ACa5A227789B45A62D377b5B18A680BE01';      // Multisig Address
 
 /*===========================  END SETTINGS  ========================*/
 /*===================================================================*/
@@ -29,27 +29,27 @@ let multicall, controller;
 
 async function getContracts() {
 
-     OTOKENFactory = await ethers.getContractAt("contracts/OTOKENFactory.sol:OTOKENFactory", "0xd54B64A096b785d19CFf3f19061509230736590c");
-     VTOKENFactory = await ethers.getContractAt("contracts/VTOKENFactory.sol:VTOKENFactory", "0x5Ed50fbB15d047B2b6BC0E6FAdE25A3B1eee106d");
-     feesFactory = await ethers.getContractAt("contracts/TOKENFeesFactory.sol:TOKENFeesFactory", "0x56DF157dec576Cc2596257FB17115a7ea0329e01");
-     rewarderFactory = await ethers.getContractAt("contracts/VTOKENRewarderFactory.sol:VTOKENRewarderFactory", "0x58Dd173F30EcfFdfEbCd242C71241fB2f179e9B9");
+     OTOKENFactory = await ethers.getContractAt("contracts/OTOKENFactory.sol:OTOKENFactory", "0x6714d54d90Eb9a602eD58477Bd1a526d164D763f");
+     VTOKENFactory = await ethers.getContractAt("contracts/VTOKENFactory.sol:VTOKENFactory", "0x1ae3748505a31a5b14fD684C9DeF875530c64Bc8");
+     feesFactory = await ethers.getContractAt("contracts/TOKENFeesFactory.sol:TOKENFeesFactory", "0x3cb97062Ac88Fe4F94a6B49fBED6DCF85aEBb5E8");
+     rewarderFactory = await ethers.getContractAt("contracts/VTOKENRewarderFactory.sol:VTOKENRewarderFactory", "0xF4f5eda74CBAD1E2371E8646d94826e4da5BB631");
 
-     TOKEN = await ethers.getContractAt("contracts/TOKEN.sol:TOKEN", "0x46e77D8349BA8AE9137B89196A61FFEE2c8c64B4");
+     TOKEN = await ethers.getContractAt("contracts/TOKEN.sol:TOKEN", "0x6BB843bC000cCe4AAC4BcF93442a05ca8aAc323C");
      OTOKEN = await ethers.getContractAt("contracts/OTOKENFactory.sol:OTOKEN", await TOKEN.OTOKEN());
      VTOKEN = await ethers.getContractAt("contracts/VTOKENFactory.sol:VTOKEN", await TOKEN.VTOKEN());
      fees = await ethers.getContractAt("contracts/TOKENFeesFactory.sol:TOKENFees", await TOKEN.FEES());
      rewarder = await ethers.getContractAt("contracts/VTOKENRewarderFactory.sol:VTOKENRewarder", await VTOKEN.rewarder());
-     governor = await ethers.getContractAt("contracts/TOKENGovernor.sol:TOKENGovernor", "0xE23E1a116090A0829b7Ab536a3aF463A5A36A5A5");
+     governor = await ethers.getContractAt("contracts/TOKENGovernor.sol:TOKENGovernor", "0xBdb0E31E1a08C732075B6cec788b89877c273b1A");
 
-     gaugeFactory = await ethers.getContractAt("contracts/GaugeFactory.sol:GaugeFactory", "0x9714412E8838337E60C8f7b4C2Bc49247964c0fd");
-     bribeFactory = await ethers.getContractAt("contracts/BribeFactory.sol:BribeFactory", "0x756fC5e6BdB26A85594346D7D0520E1c0e492452");
-     voter = await ethers.getContractAt("contracts/Voter.sol:Voter", "0xF49222fCCBa2c149B3Ff3AE9D3A30eDb1f162576");
-     minter = await ethers.getContractAt("contracts/Minter.sol:Minter", "0x3Bb30CA0Bf95D6a2Fc8aD9087BAC92711BF0947e");
+     gaugeFactory = await ethers.getContractAt("contracts/GaugeFactory.sol:GaugeFactory", "0x9F23035F0f5BE24d4674D89C8c43AFe3584Fc506");
+     bribeFactory = await ethers.getContractAt("contracts/BribeFactory.sol:BribeFactory", "0xAd7a613Dd6052bA6c33b4fD0f51Bd0565dDf31D0");
+     voter = await ethers.getContractAt("contracts/Voter.sol:Voter", "0xFBE5cABd9F9cAd8f8DcE61BE672ff7034d2e8924");
+     minter = await ethers.getContractAt("contracts/Minter.sol:Minter", "0x374fda6F54Bb59cE6E92eB510C84B171912f6f3E");
 
-     multicall = await ethers.getContractAt("contracts/Multicall.sol:Multicall", "0x1Eeb34B653d396Cdc60A9C434C09E1803dd4904E");
-     controller = await ethers.getContractAt("contracts/Controller.sol:Controller", "0x48377A5b243a17e23b6A782a2e2172b39A786064");
+     multicall = await ethers.getContractAt("contracts/Multicall.sol:Multicall", "0x39461c23c2F0B7C023CEFd4af42467Fcd5a79B98");
+     controller = await ethers.getContractAt("contracts/Controller.sol:Controller", "0x51546D0a5d60f5e591ff2EEf2ac78e41b2BB4f8c");
 
-    console.log("Contracts Retrieved");
+    //console.log("Contracts Retrieved");
 }
 
 /*===========================  END CONTRACT DATA  ===================*/
@@ -373,28 +373,28 @@ async function verifyController() {
 async function setUpSystem(wallet) {
     console.log('Starting System Set Up');
 
-    let amount = await OTOKEN.totalSupply();
-    amount = amount.div(10);
-    await OTOKEN.approve(VTOKEN.address, amount);
-    await VTOKEN.burnFor(BUILDER_ADDRESS, amount);
-    amount = await OTOKEN.balanceOf(wallet);
-    await OTOKEN.transfer(MULTISIG, amount);
-    console.log("OTOKEN Allocated");
+    //let amount = await OTOKEN.totalSupply();
+    //amount = amount.div(10);
+    //await OTOKEN.approve(VTOKEN.address, amount);
+    //await VTOKEN.burnFor(BUILDER_ADDRESS, amount);
+    //amount = await OTOKEN.balanceOf(wallet);
+    //await OTOKEN.transfer(MULTISIG, amount);
+    //console.log("OTOKEN Allocated");
 
-    await sleep(5000);
-    await gaugeFactory.setVoter(voter.address);
-    await sleep(5000);
-    await bribeFactory.setVoter(voter.address);
-    await sleep(5000);
-    console.log("Factories Set Up");
+    //await sleep(5000);
+    //await gaugeFactory.setVoter(voter.address);
+    //await sleep(5000);
+    //await bribeFactory.setVoter(voter.address);
+    //await sleep(5000);
+    //console.log("Factories Set Up");
 
-    await VTOKEN.addReward(TOKEN.address);
-    await sleep(5000);
-    await VTOKEN.addReward(OTOKEN.address);
-    await sleep(5000);
-    await VTOKEN.addReward(BASE_ADDRESS);
-    await sleep(5000);
-    console.log("VTOKEN Rewards Set Up");
+    //await VTOKEN.addReward(TOKEN.address);
+    //await sleep(5000);
+    //await VTOKEN.addReward(OTOKEN.address);
+    //await sleep(5000);
+    //await VTOKEN.addReward(BASE_ADDRESS);
+    //await sleep(5000);
+    //console.log("VTOKEN Rewards Set Up");
 
     await VTOKEN.setVoter(voter.address);
     await sleep(5000);
