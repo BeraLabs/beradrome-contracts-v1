@@ -8,7 +8,8 @@
     },
     "scripts": {
         "deploy": "hardhat run ./scripts/deploy.js  --network mainnet",
-        "deployTestPlugins": "hardhat run ./scripts/deployPluginsTest.js  --network mainnet"
+        "deployBexPairPlugin": "hardhat run ./scripts/Berachain/deployBexPairPlugin.js  --network mainnet"
+        
     },
     "devDependencies": {
         "@nomicfoundation/hardhat-chai-matchers": "^1.0.3",
