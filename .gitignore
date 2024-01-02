@@ -11,3 +11,21 @@ artifacts
 
 yarn.lock
 yarn.lock
+
+.idea
+out/
+broadcast/
+
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
+
+# Idea files
+.idea/
+
+# Hardhat files
+cache
+artifacts
+/out/
