@@ -11,3 +11,26 @@ These are issued to gauges as incentives for liquidity, dependent on vWIG votes.
 
 - Leverage borrowing against vWIG without concerns of interest or liquidation risks. 
 - 1 WIG consistently allows borrowing up to the value of 1 ETH.
+
+
+
+### FOR BERACHAIN ###
+
+Download and install Foundry to your machine: https://book.getfoundry.sh/reference/forge/forge-install
+Once it is installed:
+- Run `forge install`
+- Run `forge script BexPairPluginScript --rpc-url berapriv` to simulate plugin deployment
+- Add `--broadcast --verify` to deploy the plugin to the network
+
+Deployed addresses:
+- Factory: https://scan.berachain-internal.com/address/0x406846114B2A9b65a8A2Ab702C2C57d27784dBA2#code
+- Note, there is some issue verifying the individual WBERA-HONEY plugin
+
+- == Logs ==
+  **************************************************************
+  PluginFactory:  0x406846114B2A9b65a8A2Ab702C2C57d27784dBA2
+  **************************************************************
+  **************************************************************
+  Creating Plugin...
+  Plugin Deployed at: 0xF7Cdd10810Fa53474Ad77D0d518A7c4674070740
+  **************************************************************
