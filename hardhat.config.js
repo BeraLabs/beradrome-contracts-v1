@@ -2,6 +2,7 @@ const { config } = require("dotenv");
 
 require("@nomiclabs/hardhat-waffle");
 require("@nomicfoundation/hardhat-verify");
+require("@nomicfoundation/hardhat-foundry");
 require("solidity-coverage");
 
 /*===================================================================*/
